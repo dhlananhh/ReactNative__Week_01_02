@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Poll App</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        h1 {
+            margin-bottom: 20px;
+        }
+
+        #poll-question {
+            font-size: 18px;
+            margin-bottom: 10px;
+        }
+
+        #poll-options {
+            list-style-type: none;
+            padding: 0;
+            margin-bottom: 20px;
+        }
+
+        #poll-options li {
+            margin-bottom: 5px;
+        }
+
+        button {
+            padding: 10px 20px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            cursor: pointer;
+            margin-bottom: 20px;
+        }
+
+        #results {
+            margin-top: 20px;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Poll App</h1>
+    <div id="poll-question"></div>
+    <ul id="poll-options"></ul>
+    <button id="answer-btn">Answer Poll</button>
+    <div id="results"></div>
+
+    <script>
+        const poll = {
+            question: "What is your favourite programming language?",
+            options: ["JavaScript", "Python", "Rust", "C++"],
+            answers: new Array(4).fill(0),
+        };
+
+        function renderPoll() {
+            const pollQuestionEl = document.getElementById('poll-question');
+            pollQuestionEl.textContent = poll.question;
+
+            const pollOptionsEl = document.getElementById('poll-options');
+            pollOptionsEl.innerHTML = '';
+            poll.options.forEach((option, index) => {
+                const liEl = document.createElement('li');
+                liEl.textContent = `${index}: ${option}`;
+                pollOptionsEl.appendChild(liEl);
+            });
+        }
+
+        function registerNewAnswer() {
+            const selectedOption = parseInt(prompt(`${poll.question}\n${poll.options.map((option, index) => `${index}: ${option}`).join('\n')}\n(Write option number)`));
+            if (isNaN(selectedOption) || selectedOption < 0 || selectedOption >= poll.options.length) {
+                alert('Invalid option selected. Please try again.');
+                return;
+            }
+            poll.answers[selectedOption]++;
+            displayResults();
+        }
+
+        function displayResults(type = 'array') {
+            const resultsEl = document.getElementById('results');
+            if (type === 'array') {
+                resultsEl.textContent = `Poll results are ${poll.answers.join(', ')}`;
+            } else {
+                const resultString = poll.answers.reduce((acc, count, index) => {
+                    return `${acc}${index}: ${count} `;
+                }, '');
+                resultsEl.textContent = `Poll results are ${resultString.trim()}`;
+            }
+        }
+
+        renderPoll();
+
+        const answerBtn = document.getElementById('answer-btn');
+        answerBtn.addEventListener('click', registerNewAnswer);
+
+        // Test data for bonus
+        displayResults('array');
+        displayResults('string');
+    </script>
+</body>
+
+</html>
