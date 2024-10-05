@@ -371,9 +371,9 @@ function generateRandomArray(n) {
     return shuffleArray(arr);
 }
 console.log("Generate random array of 5 numbers");
-console.log(generateRandomArray(5)); // [3, 1, 4, 5, 2]
+console.log(generateRandomArray(5)); 
 console.log("Generate random array of 10 numbers");
-console.log(generateRandomArray(10)); // [7, 2, 1, 6, 4, 3, 10, 8, 5, 9]
+console.log(generateRandomArray(10)); 
 console.log('\n-*--*--*--*--*--*--*--*--*--*--*--*-');
 
 
@@ -408,10 +408,12 @@ function fibonacci(n) {
     return b.toString();
 }
 console.log(fibonacci(500)); // 139423224561697880139724382870407283950070256587697307264108962948325571622863290691557658876222521294125
+console.log('\n-*--*--*--*--*--*--*--*--*--*--*--*-');
 
 
 // 53. Calculate 70! with high precision (all digits)
 // 53. Tính 70! với độ chính xác cao
+console.log('53. Tính 70! với độ chính xác cao');
 function factorial(n) {
     let result = BigInt(1);
     for (let i = 2; i <= n; i++) {
@@ -420,3 +422,4 @@ function factorial(n) {
     return result.toString();
 }
 console.log(factorial(70)); // 11978571669969891796072783721689098736458938142546425857555362864628009582789845319680000000000000000
+console.log('\n-*--*--*--*--*--*--*--*--*--*--*--*-');
