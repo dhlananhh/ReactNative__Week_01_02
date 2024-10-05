@@ -1,0 +1,60 @@
+:root {
+    /* Spacing variables */
+    --space-16: 16px;
+    --space-128: 128px;
+    --space-64: 64px;
+    
+    /* Colors */
+    --clr-shade: #333333;
+    --clr-tint: #ffffff;
+    --clr-grey-read: #666666;
+    
+    /* Typography */
+    --font-16: 16px;
+    --letter-space-n05: -0.5px;
+    --line-height-17: 1.7;
+    
+    /* Border radius */
+    --radius-5: 5px;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    max-width: 800px;
+    margin: 30px auto;
+    padding: 0 20px;
+}
+
+.container {
+    width: 100%;
+}
+
+.conversion-container {
+    margin-bottom: 20px;
+}
+
+.btn {
+    padding: 10px 20px;
+    border: none;
+    border-radius: var(--radius-5);
+    cursor: pointer;
+    font-size: var(--font-16);
+}
+
+.project-btn {
+    background-color: #4CAF50;
+    color: white;
+}
+
+.project-btn:hover {
+    background-color: #45a049;
+}
+
+.output-container {
+    margin-top: 20px;
+}
+
+.output-container p {
+    margin: 5px 0;
+    font-family: monospace;
+}

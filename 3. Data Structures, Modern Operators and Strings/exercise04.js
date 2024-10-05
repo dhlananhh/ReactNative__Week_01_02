@@ -38,24 +38,53 @@
 */
 
 
-document.body.append(document.createElement('textarea'));
-document.body.append(document.createElement('br'));
-document.body.append(document.createElement('button'));
+// Selection & Creation of elements
+const conversionContainerEl = document.querySelector('.conversion-container');
+conversionContainerEl.style.display = 'flex';
+conversionContainerEl.style.gap = 'var(--space-16)';
 
-const button = document.querySelector('button');
-const textarea = document.querySelector('textarea');
-button.innerHTML = 'Transform';
+const outputContainerEl = document.querySelector('.output-container');
 
-// document.querySelector('textarea');
-// document.querySelector('button');
+const textArea = document.createElement('textArea');
+const convertBtn = document.createElement('button');
 
-document.querySelector('button').addEventListener('click', function() {
-    const text = document.querySelector('textarea').value;
-    const rows = text.split('\n');
-    
-    for (const [i, row] of rows.entries()) {
-        const [first, second] = row.toLowerCase().trim().split('_');
-        const output = `${first}${second.replace(second[0], second[0].toUpperCase())}`;
-        console.log(`${output.padEnd(20)}${'✅'.repeat(i + 1)}`);
-    }
+conversionContainerEl.append(textArea);
+conversionContainerEl.append(convertBtn);
+
+// Styling of elements
+textArea.style.minHeight = 'calc(var(--space-128) + var(--space-64))';
+textArea.style.padding = 'var(--space-16)';
+textArea.style.border = '1px solid var(--clr-shade)';
+textArea.style.borderRadius = 'var(--radius-5)';
+textArea.style.display = 'flex';
+textArea.style.flex = 1;
+textArea.style.font = 'inherit';
+textArea.style.fontSize = 'var(--font-16)';
+textArea.style.letterSpacing = 'var(--letter-space-n05)';
+textArea.style.lineHeight = 'var(--line-height-17)';
+textArea.style.color = 'var(--clr-shade)';
+textArea.style.backgroundColor = 'var(--clr-tint)';
+
+convertBtn.textContent = 'Convert';
+convertBtn.classList.add('btn', 'project-btn');
+convertBtn.style.alignSelf = 'flex-end';
+
+// Functionality of elements
+convertBtn.addEventListener('click', function () {
+    outputContainerEl.innerHTML = ''
+    const text = textArea.value;
+    const textInput = text.split('\n');
+
+    for (const [i, name] of textInput.entries()) {
+        const [first, second] = name.toLowerCase().trim().split('_');
+        const conversion = first + second.replace(second[0], second[0].toUpperCase());
+        const output = conversion.padEnd(20, ' ') + '✅'.repeat(i + 1);
+        console.log(output);
+        const newLine = document.createElement('p');
+        newLine.style.color = 'var(--clr-grey-read)';
+        newLine.style.letterSpacing = 'var(--letter-space-n05)';
+        newLine.style.lineHeight = 'var(--line-height-17)';
+        newLine.textContent = output;
+        outputContainerEl.append(newLine)
+    };
 });
