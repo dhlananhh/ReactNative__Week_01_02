@@ -290,9 +290,50 @@ console.log("Sum of numbers in jagged array [1, [2, [3, 4], 5], 6]");
 console.log(sumJaggedArray([1, [2, [3, 4], 5], 6])); // 21
 console.log('\n-*--*--*--*--*--*--*--*--*--*--*--*-');
 
+
 // 46. Find the maximum number in a jagged array of numbers or array of numbers
+// 46. Tìm số lớn nhất trong mảng đa chiều
+console.log('46. Tìm số lớn nhất trong mảng đa chiều');
+function maxInJaggedArray(arr) {
+    return arr.reduce((max, item) => {
+        if (Array.isArray(item)) {
+            return Math.max(max, maxInJaggedArray(item));
+        }
+        return Math.max(max, typeof item === 'number' ? item : -Infinity);
+    }, -Infinity);
+}
+console.log("Maximum number in jagged array [1, [2, [3, 4], 5], 6]");
+console.log(maxInJaggedArray([1, [2, [3, 4], 5], 6])); // 6
+console.log('\n-*--*--*--*--*--*--*--*--*--*--*--*-');
+
+
 // 47. Deep copy a jagged array with numbers or other arrays in a new array
+// 47. Sao chép mảng đa chiều
+console.log('47. Sao chép mảng đa chiều');
+function deepCopy(arr) {
+    return JSON.parse(JSON.stringify(arr));
+}
+console.log("Deep copy jagged array [1, [2, [3, 4], 5], 6]");
+const arr = [1, [2, [3, 4], 5], 6];
+const copy = deepCopy(arr);
+console.log(copy); // [1, [2, [3, 4], 5], 6]
+console.log('\n-*--*--*--*--*--*--*--*--*--*--*--*-');
+
+
 // 48. Create a function to return the longest word in a string
+// 48. Tìm từ dài nhất trong chuỗi
+console.log('48. Tìm từ dài nhất trong chuỗi');
+function longestWord(str) {
+    return str.split(/\s+/).reduce((longest, word) => 
+        word.length > longest.length ? word : longest
+    , '');
+}
+console.log("Longest word in 'I am a programmer'");
+console.log(longestWord('I am a programmer')); // programmer
+console.log('\n-*--*--*--*--*--*--*--*--*--*--*--*-');
+
+
+
 // 49. Shuffle an array of strings
 // 50. Create a function that will receive n as argument and return an array of n
 // random numbers from 1 to n. The numbers should be unique inside the array.
