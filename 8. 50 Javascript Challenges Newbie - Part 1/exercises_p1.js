@@ -1,5 +1,6 @@
 // 50 Javascript Challenges for Beginners - Part 1
 
+
 // 1. Print numbers from 1 to 10 
 // 1. In số từ 1 đến 10
 console.log('\n1. Print numbers from 1 to 10');
@@ -51,7 +52,7 @@ let sum_1_to_10 = 0;
 for (let i = 1; i <= 10; i++) {
     sum_1_to_10 += i;
 }
-console.log(`Tổng từ 1 đến 10 là: ${sum_1_to_10}`);
+console.log(`Tổng từ 1 đến 10 là: ${sum_1_to_10}`); // Kết quả: 55
 console.log('\n-*--*--*--*--*--*--*--*--*--*--*--*-');
 
 
@@ -63,7 +64,7 @@ let factorial = 1;
 for (let i = 1; i <= 10; i++) {
     factorial *= i;
 }
-console.log(`10! = ${factorial}`);
+console.log(`10! = ${factorial}`); // Kết quả: 3628800
 console.log('\n-*--*--*--*--*--*--*--*--*--*--*--*-');
 
 
@@ -75,7 +76,7 @@ let sumEvenNumbers = 0;
 for (let i = 12; i < 30; i += 2) {
     sumEvenNumbers += i;
 }
-console.log(`Tổng các số chẵn từ 12 đến 28 là: ${sumEvenNumbers}`);
+console.log(`Tổng các số chẵn từ 12 đến 28 là: ${sumEvenNumbers}`); // Kết quả: 200
 console.log('\n-*--*--*--*--*--*--*--*--*--*--*--*-');
 
 
@@ -86,7 +87,7 @@ console.log("8. Viết hàm chuyển đổi từ độ C sang độ F");
 function celsiusToFahrenheit(celsius) {
     return (celsius * 9/5) + 32;
 }
-console.log(`25°C = ${celsiusToFahrenheit(25)}°F`);
+console.log(`25°C = ${celsiusToFahrenheit(25)}°F`); // Kết quả: 77°F
 console.log('\n-*--*--*--*--*--*--*--*--*--*--*--*-');
 
 
@@ -97,7 +98,7 @@ console.log("9. Viết hàm chuyển đổi từ độ F sang độ C");
 function fahrenheitToCelsius(fahrenheit) {
     return (fahrenheit - 32) * 5/9;
 }
-console.log(`77°F = ${fahrenheitToCelsius(77)}°C`);
+console.log(`77°F = ${fahrenheitToCelsius(77)}°C`); // Kết quả: 25°C
 console.log('\n-*--*--*--*--*--*--*--*--*--*--*--*-');
 
 
