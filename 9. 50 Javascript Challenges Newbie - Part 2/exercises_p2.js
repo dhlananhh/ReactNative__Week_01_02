@@ -333,11 +333,90 @@ console.log(longestWord('I am a programmer')); // programmer
 console.log('\n-*--*--*--*--*--*--*--*--*--*--*--*-');
 
 
-
 // 49. Shuffle an array of strings
-// 50. Create a function that will receive n as argument and return an array of n
-// random numbers from 1 to n. The numbers should be unique inside the array.
-// 51. Find the frequency of letters inside a string. Return the result as an array of
-// arrays. Each subarray has 2 elements: letter and number of occurrences.
+// 49. Xáo trộn mảng chuỗi
+console.log('49. Xáo trộn mảng chuỗi');
+function shuffleArray(arr) {
+    for (let i = arr.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+        [arr[i], arr[j]] = [arr[j], arr[i]];
+    }
+    return arr;
+}
+let arr1 = ["apple", "banana", "cherry", "date", "elderberry"];
+console.log("Original array 1:", arr1);
+console.log("Shuffled array:", shuffleArray(arr1));
+
+let arr2 = ["one", "two", "three", "four", "five"];
+console.log("Original array 2:", arr2);
+console.log("Shuffled array:", shuffleArray(arr2));
+
+let arr3 = ["red", "blue", "green", "yellow", "purple"];
+console.log("Original array 3:", arr3);
+console.log("Shuffled array:", shuffleArray(arr3));
+
+let arr4 = ["cat", "dog", "mouse", "rabbit", "elephant"];
+console.log("Original array 4:", arr4);
+console.log("Shuffled array:", shuffleArray(arr4));
+console.log('\n-*--*--*--*--*--*--*--*--*--*--*--*-');
+
+
+// 50. Create a function that will receive n as argument 
+    // and return an array of n random numbers from 1 to n. 
+    // The numbers should be unique inside the array.
+// 50. Tạo mảng n số ngẫu nhiên từ 1 đến n
+console.log('50. Tạo mảng n số ngẫu nhiên từ 1 đến n');
+function generateRandomArray(n) {
+    const arr = Array.from({length: n}, (_, i) => i + 1);
+    return shuffleArray(arr);
+}
+console.log("Generate random array of 5 numbers");
+console.log(generateRandomArray(5)); // [3, 1, 4, 5, 2]
+console.log("Generate random array of 10 numbers");
+console.log(generateRandomArray(10)); // [7, 2, 1, 6, 4, 3, 10, 8, 5, 9]
+console.log('\n-*--*--*--*--*--*--*--*--*--*--*--*-');
+
+
+// 51. Find the frequency of letters inside a string. 
+    // Return the result as an array of arrays. 
+    // Each subarray has 2 elements: letter and number of occurrences.
+// 51. Tìm tần suất xuất hiện của các chữ cái trong chuỗi
+console.log('51. Tìm tần suất xuất hiện của các chữ cái trong chuỗi');
+function letterFrequency(str) {
+    const freq = {};
+    str.toLowerCase().replace(/[^a-z]/g, '').split('').forEach(char => {
+        freq[char] = (freq[char] || 0) + 1;
+    });
+    return Object.entries(freq).sort((a, b) => b[1] - a[1]);
+}
+console.log("Letter frequency in 'hello world'");
+console.log(letterFrequency('hello world')); // [['l', 3], ['o', 2], ['h', 1], ['e', 1], ['w', 1], ['r', 1], ['d', 1]]
+console.log("Letter frequency in 'duong hoang lan anh'");
+console.log(letterFrequency('duong hoang lan anh')); // [['a', 3], ['n', 3], ['o', 2], ['u', 2], ['d', 1], ['g', 1], ['h', 1], ['l', 1]]
+console.log('\n-*--*--*--*--*--*--*--*--*--*--*--*-');
+
+
 // 52. Calculate Fibonacci(500) with high precision (all digits)
+// 52. Tính số Fibonacci(500) với độ chính xác cao
+console.log('52. Tính số Fibonacci(500) với độ chính xác cao');
+function fibonacci(n) {
+    let a = BigInt(0);
+    let b = BigInt(1);
+    for (let i = 2; i <= n; i++) {
+        [a, b] = [b, a + b];
+    }
+    return b.toString();
+}
+console.log(fibonacci(500)); // 139423224561697880139724382870407283950070256587697307264108962948325571622863290691557658876222521294125
+
+
 // 53. Calculate 70! with high precision (all digits)
+// 53. Tính 70! với độ chính xác cao
+function factorial(n) {
+    let result = BigInt(1);
+    for (let i = 2; i <= n; i++) {
+      result *= BigInt(i);
+    }
+    return result.toString();
+}
+console.log(factorial(70)); // 11978571669969891796072783721689098736458938142546425857555362864628009582789845319680000000000000000
