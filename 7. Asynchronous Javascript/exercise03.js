@@ -17,20 +17,24 @@ function createImage(imgPath) {
 async function loadNPause() {
     try {
         let img1 = await createImage('img/image1.png'); // Hình ảnh 1
-        await wait(2);
+        await wait(10); // dừng chương trình trong 10 giây
         img1.style.display = 'none';
 
         let img2 = await createImage('img/image2.png'); // Hình ảnh 2
-        await wait(2);
+        await wait(10); // dừng chương trình trong 10 giây
         img2.style.display = 'none';
 
         let img3 = await createImage('img/image3.png'); // Hình ảnh 3
-        await wait(2);
+        await wait(10); // dừng chương trình trong 10 giây
         img3.style.display = 'none';
 
         let img4 = await createImage('img/image4.png'); // Hình ảnh 4
-        await wait(2);
+        await wait(10); // dừng chương trình trong 10 giây
         img4.style.display = 'none';
+
+        let img5 = await createImage('img/image5.png'); // Hình ảnh 5
+        await wait(10); // dừng chương trình trong 10 giây
+        img5.style.display = 'none';
     } catch (error) {
         console.error(error);
     }
@@ -50,4 +54,4 @@ async function loadAll(imgArr) {
 
 // Gọi hàm loadNPause hoặc loadAll để kiểm tra
 // loadNPause(); // Bỏ chú thích để sử dụng loadNPause
-loadAll(['img/image1.png', 'img/image2.png', 'img/image3.png']); // Thay đổi đường dẫn cho phù hợp
+loadAll(['img/image1.png', 'img/image2.png', 'img/image3.png', 'img/image4.png', 'img/image5.png']); // Thay đổi đường dẫn cho phù hợp
