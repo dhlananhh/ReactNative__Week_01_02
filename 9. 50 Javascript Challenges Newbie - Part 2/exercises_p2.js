@@ -163,25 +163,133 @@ function stringToCharArray(str) {
 }
 console.log("Convert string to an array of characters 'hello'");
 console.log(stringToCharArray('hello')); // ['h', 'e', 'l', 'l', 'o']
-
-
+console.log('\n-*--*--*--*--*--*--*--*--*--*--*--*-');
 
 
 // 37. Create a function that will convert a string in an array containing the ASCII codes of each character
+// 37. Chuyển đổi chuỗi thành mảng mã ASCII
+console.log('37. Chuyển đổi chuỗi thành mảng mã ASCII');
+function stringToAsciiArray(str) {
+    return str.split('').map(char => char.charCodeAt(0));
+}
+console.log("Convert string to an array of ASCII codes 'hello'");
+console.log(stringToAsciiArray('hello')); // [104, 101, 108, 108, 111]
+console.log('\n-*--*--*--*--*--*--*--*--*--*--*--*-');
+
+
 // 38. Create a function that will convert an array containing ASCII codes in a string
+// 38. Chuyển đổi mảng mã ASCII thành chuỗi
+console.log('38. Chuyển đổi mảng mã ASCII thành chuỗi');
+function asciiArrayToString(arr) {
+    return String.fromCharCode(...arr);
+}
+console.log("Convert an array of ASCII codes to a string [104, 101, 108, 108, 111]");
+console.log(asciiArrayToString([104, 101, 108, 108, 111])); // hello
+console.log('\n-*--*--*--*--*--*--*--*--*--*--*--*-');
+
 // 39. Implement the Caesar cypher
+// 39. Triển khai mã hóa Caesar
+console.log('39. Triển khai mã hóa Caesar');
+function caesarCipher(str, shift) {
+    return str.replace(/[a-z]/gi, char => {
+        const code = char.charCodeAt(0);
+        const isUpperCase = char === char.toUpperCase();
+        const base = isUpperCase ? 65 : 97;
+        return String.fromCharCode((code - base + shift) % 26 + base);
+    });
+}
+console.log("Caesar cipher 'hello' with shift 3");
+console.log(caesarCipher('hello', 3)); // khoor
+console.log('\n-*--*--*--*--*--*--*--*--*--*--*--*-');
+
+
 // 40. Implement the bubble sort algorithm for an array of numbers
+// 40. Triển khai thuật toán sắp xếp nổi bọt
+console.log('40. Triển khai thuật toán sắp xếp nổi bọt');
+function bubbleSort(arr) {
+    const n = arr.length;
+    for (let i = 0; i < n - 1; i++) {
+        for (let j = 0; j < n - i - 1; j++) {
+            if (arr[j] > arr[j + 1]) {
+                [arr[j], arr[j + 1]] = [arr[j + 1], arr[j]];
+            }
+        }
+    }
+    return arr;
+}
+console.log("Bubble sort [5, 3, 8, 2, 1, 4]");
+console.log(bubbleSort([5, 3, 8, 2, 1, 4])); // [1, 2, 3, 4, 5, 8]
+console.log('\n-*--*--*--*--*--*--*--*--*--*--*--*-');
+
+
 // 41. Create a function to calculate the distance between two points defined by their x, y coordinates
-// 42. Create a function that will return a Boolean value indicating if two circles
-// defined by center coordinates and radius are intersecting
-// 43. Create a function that will receive a bi-dimensional array as argument and a
-// number and will extract as a unidimensional array the column specified by the
-// number
-// 44. Create a function that will convert a string containing a binary number into a
-// number
+// 41. Tính khoảng cách giữa hai điểm x và y cho trước
+console.log('41. Tính khoảng cách giữa hai điểm x và y cho trước');
+function distance(x1, y1, x2, y2) {
+    return Math.sqrt(Math.pow(x2 - x1, 2) + Math.pow(y2 - y1, 2));
+}
+console.log("Distance between (1, 1) and (4, 5)");
+console.log(distance(1, 1, 4, 5)); // 5
+console.log('\n-*--*--*--*--*--*--*--*--*--*--*--*-');
+
+
+// 42. Create a function that will return a Boolean value 
+    // indicating if two circles defined by center coordinates and radius are intersecting
+// 42. Kiểm tra hai hình tròn có giao nhau không
+console.log('42. Kiểm tra hai hình tròn có giao nhau không');
+function circlesIntersect(x1, y1, r1, x2, y2, r2) {
+    const distanceBetweenCenters = Math.sqrt(Math.pow(x2 - x1, 2) + Math.pow(y2 - y1, 2));
+    return distanceBetweenCenters <= r1 + r2;
+}
+console.log("Check if two circles intersect (1, 1, 1) and (4, 5, 1)");
+console.log(circlesIntersect(1, 1, 1, 4, 5, 1)); // false
+console.log("Check if two circles intersect (1, 1, 2) and (2, 2, 2)");
+console.log(circlesIntersect(1, 1, 2, 2, 2, 2)); 
+console.log('\n-*--*--*--*--*--*--*--*--*--*--*--*-');
+
+
+// 43. Create a function that will receive a bi-dimensional array as argument 
+    // and a number and will extract as a unidimensional array 
+    // the column specified by the number
+// 43. Trích xuất một cột từ mảng hai chiều
+console.log('43. Trích xuất một cột từ mảng hai chiều');
+function extractColumn(arr, columnIndex) {
+    return arr.map(row => row[columnIndex]);
+}
+console.log("Extract column 1 from [[1, 2, 3], [4, 5, 6], [7, 8, 9]]");
+console.log(extractColumn([[1, 2, 3], [4, 5, 6], [7, 8, 9]], 1)); // [2, 5, 8]
+console.log('\n-*--*--*--*--*--*--*--*--*--*--*--*-');
+
+
+// 44. Create a function that will convert a string containing a binary number into a number
+// 44. Chuyển đổi chuỗi nhị phân thành số
+console.log('44. Chuyển đổi chuỗi nhị phân thành số');
+function binaryToNumber(binary) {
+    return parseInt(binary, 2);
+}
+console.log("Convert binary string '1010' to number");
+console.log(binaryToNumber('1010')); // 10
+console.log("Convert binary string '1101' to number");
+console.log(binaryToNumber('1101')); // 13
+console.log('\n-*--*--*--*--*--*--*--*--*--*--*--*-');
+
+
 // 45. Create a function to calculate the sum of all the numbers in a jagged array
-// (contains numbers or other arrays of numbers on an unlimited number of
-// levels)
+    // (contains numbers or other arrays of numbers on an unlimited number of levels)
+// 45. Tính tổng các số trong mảng đa chiều
+console.log('45. Tính tổng các số trong mảng đa chiều');
+function sumJaggedArray(arr) {
+    return arr.reduce((sum, item) => {
+        if (Array.isArray(item)) {
+            return sum + sumJaggedArray(item);
+        }
+        return sum + (typeof item === 'number' ? item : 0);
+    }, 0);
+}
+console.log("Sum of numbers in jagged array [1, [2, [3, 4], 5], 6]");
+console.log(sumJaggedArray([1, [2, [3, 4], 5], 6])); // 21
+console.log('\n-*--*--*--*--*--*--*--*--*--*--*--*-');
+
 // 46. Find the maximum number in a jagged array of numbers or array of numbers
 // 47. Deep copy a jagged array with numbers or other arrays in a new array
 // 48. Create a function to return the longest word in a string
